@@ -1,0 +1,6 @@
+[book]
+authors = ["flaging"]
+language = "en"
+multilingual = false
+src = "src"
+title ="blog template for flaging"
