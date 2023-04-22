@@ -1,9 +1,3 @@
-# blog-template123
+# io
 
-## second class title
-
-### 3-st class title
-
-normal data
-
-[test](./test/test.md)
+io is a structured knowledge collector for flaging, which makes it effective to make it more easy and well orgnized.
