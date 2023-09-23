@@ -45,7 +45,10 @@ def print_github(succeed, content):
   pattern = r'github\.com/[A-Za-z0-9./\-\_]+'  
   links = re.findall(pattern, content)
   for link in links:
-    succeed.writelines('\n\nGithub: ['+link+']('+link+')')
+    if link.startswith('http'):
+      succeed.writelines('\n\nGithub: ['+link+']('+link+')')
+    else:
+      succeed.writelines('\n\nGithub: ['+link+'](https://'+link+')')
 def print_md(succeed, title, link, content, links, mobile_pic_link):
   if len(content) > 1:
     if content.startswith(':'): content = content[1:]

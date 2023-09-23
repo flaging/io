@@ -10,7 +10,6 @@ def get_weibo_data_from_url(url):
   
   cookie = get_cookie()
   # 请求页面
-  print(cookie)
   headers = {'User_Agent': user_agent, 'Cookie': cookie}
   resp = requests.get(url, headers=headers)
   # resp = requests.get(url)
