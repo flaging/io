@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-git checkout main
+git checkout io-blog
 if [[ -d /tmp/docs ]];then
 rm -rf /tmp/docs/
 fi
@@ -15,4 +15,4 @@ mv /tmp/docs .
 git add *
 git commit -m "[build] update data from main"
 git push origin gh-page:gh-page -f
-git checkout main
+git checkout io-blog
