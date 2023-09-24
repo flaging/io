@@ -5,7 +5,7 @@ def get_weibo_data_from_url(url):
   # url='https://weibo.cn/1402400261/LBuKWw2ii'
   user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'
   def get_cookie():
-    file = open('cookie.txt', 'r')
+    file = open('../cookie.txt', 'r')
     return file.read()
   
   cookie = get_cookie()
