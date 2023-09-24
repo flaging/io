@@ -6,7 +6,7 @@ name: SYNC_RSS
 on:
   push:
     branches:
-      - 'main'
+      - 'io-blog'
       - 'releases/**'
       
   # Allows you tothis workflow manually from the Actions tab
