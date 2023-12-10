@@ -68,7 +68,7 @@ def random_sleep():
   scale = 1
   if index > 8: scale = 10
   time.sleep(random.randint(1, 200)/200.0*scale)
-total_link = match_link('src/23-09-23-1.md', total_link)
+total_link = match_link('src/23-12-09.md', total_link)
 # total_link = open('2023-09-23-16:58:35.failed.txt', 'r').readlines()
 from  weibo import get_weibo_data_from_url as downloader
 now = time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
