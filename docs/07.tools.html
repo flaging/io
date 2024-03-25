@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>实用工具 - 福来鸽的剪报库</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="01.intro.html">简要介绍</a></li><li class="chapter-item expanded affix "><li class="part-title">深度学习</li><li class="chapter-item expanded "><a href="02.deep-models.html"><strong aria-hidden="true">1.</strong> 深度学习模型与算法</a></li><li class="chapter-item expanded "><a href="03.deep-modules.html"><strong aria-hidden="true">2.</strong> 深度学习结构与组件</a></li><li class="chapter-item expanded "><a href="04.deep-accelate.html"><strong aria-hidden="true">3.</strong> 深度学习加速方法</a></li><li class="chapter-item expanded "><a href="05.deep-hardware.html"><strong aria-hidden="true">4.</strong> 深度学习硬件</a></li><li class="chapter-item expanded affix "><li class="part-title">系统与应用</li><li class="chapter-item expanded "><a href="06.systems.html"><strong aria-hidden="true">5.</strong> 操作系统与系统软件</a></li><li class="chapter-item expanded "><a href="07.tools.html" class="active"><strong aria-hidden="true">6.</strong> 实用工具</a></li><li class="chapter-item expanded "><a href="09.languages.html"><strong aria-hidden="true">7.</strong> 编程语言</a></li><li class="chapter-item expanded affix "><li class="part-title">未整理链接</li><li class="chapter-item expanded "><a href="11.links.html"><strong aria-hidden="true">8.</strong> 技术链接</a></li><li class="chapter-item expanded "><a href="12.weibo.html"><strong aria-hidden="true">9.</strong> 微博链接</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">福来鸽的剪报库</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="实用工具"><a class="header" href="#实用工具">实用工具</a></h1>
+<h2 id="开源工具"><a class="header" href="#开源工具">开源工具</a></h2>
+<p><a href="https://github.com/JimLiu/whisper-podcast-subtitles">Apple PodCast Transcription with OpenAI's Whisper</a></p>
+<ul>
+<li>实用whisper识别podcast并生成字幕</li>
+</ul>
+<p><a href="https://github.com/bhattbhavesh91/voice-assistant-whisper-chatgpt">voice-assistant-whisper-chatgpt</a></p>
+<ul>
+<li>联合使用whisper和chatgpt</li>
+</ul>
+<p><a href="https://github.com/abdeladim-s/subsai">subai</a></p>
+<ul>
+<li>使用whisper生成视频字幕</li>
+</ul>
+<p><a href="https://github.com/dsymbol/decipher">Decipher</a></p>
+<ul>
+<li>whisper生成字幕, 额外优化可以将字幕丢给chatgpt改错字</li>
+</ul>
+<p><a href="https://github.com/m1guelpf/yt-whisper">yt-whisper</a></p>
+<ul>
+<li>使用whisper生成Youtube字幕</li>
+</ul>
+<p><a href="https://github.com/baidu/dperf">dperf</a></p>
+<ul>
+<li>基于DPDK的网络压测工具, 能打比较大的流量</li>
+</ul>
+<p><a href="https://www.marticliment.com/wingetui/">wingetui</a>: 为winget写的ui界面</p>
+<p><a href="https://github.com/rapiz1/catp">catp</a></p>
+<ul>
+<li>拦截系统调用重新打印重定向的内容</li>
+</ul>
+<p><a href="https://github.com/valinet/ExplorerPatcher">ExplorePatcher</a></p>
+<ul>
+<li>windows11开始菜单修改</li>
+</ul>
+<p><a href="https://callsam.ai/signin">callannie</a></p>
+<ul>
+<li>语音对话, ASR+chatgpt3.5</li>
+</ul>
+<p><a href="https://www.appinn.com/rss-translate/">rss-translate</a></p>
+<ul>
+<li><a href="https://rcy1314.github.io/Rss-Translation/">github</a></li>
+<li><a href="https://github.com/tjsky/RSS-Translation">修改版github</a></li>
+<li><a href="https://www.tjsky.net/tutorial/644">教程</a></li>
+</ul>
+<p><a href="https://github.com/AutoLLM/ArxivDigest">ArxivDigest</a></p>
+<ul>
+<li>使用chatgpt总结arxiv订阅,需要部署和OPENAI的key</li>
+</ul>
+<p><a href="https://github.com/pofey/movie_robot">movie_robot</a>: 根据豆瓣想看自动下载影视库</p>
+<p><a href="https://omnivore.app/home">omnivore@site</a>: pocket替代</p>
+<p><a href="https://github.com/chip-red-pill/MicrocodeDecryptor">MicrocodeDecryptor@github</a>:Intel的CPU微码解密器</p>
+<h2 id="关注博主"><a class="header" href="#关注博主">关注博主</a></h2>
+<p><a href="https://www.yuque.com/serviceup/misc">serviceUp@yuque</a></p>
+<ul>
+<li>博主一些翻译\文章和随笔</li>
+</ul>
+<h2 id="网站链接"><a class="header" href="#网站链接">[网站链接]</a></h2>
+<p><a href="https://pan.baidu.com/s/1RA8SffhcUkhEXskLreT52A?pwd=uq64">大模型投行研报收集(百度网盘)</a>
+<a href="https://github.com/alexbei/telegram-groups">telegram-groups</a>: telegram大组群整理(含NSFW)</p>
+<h2 id="profile"><a class="header" href="#profile">profile</a></h2>
+<p><a href="https://github.com/cyring/CoreFreq">coreFreq</a></p>
+<ul>
+<li>intel &amp; AMD CPU性能分析工具,类似htop, 能记录IPC等内容</li>
+</ul>
+<h2 id="字体"><a class="header" href="#字体">字体</a></h2>
+<p><a href="https://github.com/intel/intel-one-mono">intel-one-mono</a></p>
+<p>https://github.com/intel/intel-one-mono</p>
+<p><a href="https://vimskill.readthedocs.io/index.html">VimSkill</a>: vim教程</p>
+<h2 id="压缩"><a class="header" href="#压缩">压缩</a></h2>
+<pre><code class="language-bash"># 解压tar.zst文件
+tar -I zstd -xvf xxxx.tar.zst
+</code></pre>
+<h2 id="翻译软件"><a class="header" href="#翻译软件">翻译软件</a></h2>
+<p><a href="https://github.com/pot-app/pot-desktop">pot-desktop</a>: 支持多后端</p>
+<h2 id="爬虫"><a class="header" href="#爬虫">爬虫</a></h2>
+<p><a href="https://github.com/NaiboWang/EasySpider">EasySpider</a>: 带UI的爬虫软件</p>
+<h2 id="镜像"><a class="header" href="#镜像">镜像</a></h2>
+<p><a href="https://www.cnblogs.com/yjt1993/p/12034207.html">kvm错误：failed to initialize KVM: Permission denied</a></p>
+<ul>
+<li>podman启动时候报KVM错误,运行命令</li>
+<li>修改/dev/kvm权限:<code>chown root:kvm /dev/kvm;chmod 666 /dev/kvm</code></li>
+<li>增加配置: <code> cat /etc/libvirt/qemu.conf =&gt;user=&quot;root&quot;\ngroup=&quot;root&quot;</code></li>
+<li>重启服务: <code>systemctl restart libvirtd</code></li>
+</ul>
+<h3 id="git-file-history"><a class="header" href="#git-file-history"><a href="https://marketplace.visualstudio.com/items?itemName=pomber.git-file-history">git file history</a></a></h3>
+<ul>
+<li>vscode插件</li>
+</ul>
+<p><a href="http://www.jdawiseman.com/books/pricing-money/Pricing_Money_JDAWiseman.html">Pricing Money: 2019 Preface</a></p>
+<ul>
+<li>金融类阅读手册</li>
+</ul>
+<p><a href="https://cloud.tencent.com/developer/article/1404152">Linux下iptables 禁止端口和开放端口</a></p>
+<ul>
+<li><code>iptables -A INPUT -p tcp --dport 22 -j ACCEPT</code></li>
+<li><code>iptables -L -n</code></li>
+<li><code>service iptables save</code></li>
+</ul>
+<p><a href="https://perfetto.dev/docs/contributing/build-instructions">Perfetto build instructions</a></p>
+<ul>
+<li>perfetto是开源perf工具, 具有UI界面(类似Nvidia Nsight)</li>
+<li><code>git clone https://android.googlesource.com/platform/external/perfetto/;</code></li>
+<li><code>cd perfetto;tools/install-build-deps --ui;ui/run-dev-server --help</code></li>
+</ul>
+<p><a href="https://www.cnblogs.com/wanqieddy/archive/2011/09/21/2184257.html">Makefile 中:= ?= += =的区别</a></p>
+<ul>
+<li>= 是最基本的赋值, 展开后文件的最终值</li>
+<li>:= 是覆盖之前的值, 运行到当前位置的值</li>
+<li>?= 是如果没有被赋值过就赋予等号后面的值</li>
+<li>+= 是添加等号后面的值</li>
+</ul>
+<p><a href="https://docs.python.org/zh-cn/3/library/dataclasses.html">python: dataclasses --- 数据类</a></p>
+<ul>
+<li><code>@dataclass</code></li>
+</ul>
+<p><a href="https://github.com/Bycelium/PyFlow">Pyflow</a>: python可视化编程</p>
+<p><a href="https://docs.python.org/3/library/operator.html">operator</a>: python计算库文档</p>
+<p><a href="https://docs.python.org/3/library/unittest.html">unittest</a>: python测试库文档</p>
+<p><a href="https://github.com/bodaay/HuggingFaceModelDownloader">HuggingFaceModelDownloader</a></p>
+<ul>
+<li>模型下载器</li>
+</ul>
+<h2 id="large-models"><a class="header" href="#large-models">Large Models</a></h2>
+<h3 id="stable-diffusion-weights"><a class="header" href="#stable-diffusion-weights">stable diffusion weights</a></h3>
+<p><a href="https://huggingface.co/BanKaiPls/AsianModel/tree/main">BanKaiPls/AsianModel</a>:亚洲人生成
+<a href="https://www.ptsearch.info/home/">prompt search</a></p>
+<h3 id="datasets"><a class="header" href="#datasets">datasets</a></h3>
+<p><a href="https://openwebtext2.readthedocs.io/en/latest/">OpenWebText2</a></p>
+<ul>
+<li>语言模型数据集</li>
+</ul>
+<p><a href="https://github.com/garychowcmu/daizhigev20">daizhigev20</a>: 博主整理的古文文献</p>
+<h3 id="gdb"><a class="header" href="#gdb">GDB</a></h3>
+<p><a href="https://blog.csdn.net/zhangye3017/article/details/80382496">线程的查看以及利用gdb调试多线程</a>:多线程调试</p>
+<p><a href="http://c.biancheng.net/view/8252.html">GDB print命令高级用法</a></p>
+<ul>
+<li>print first@len</li>
+<li>print file::variable</li>
+<li>print function::variable</li>
+</ul>
+<p><a href="https://www.cnblogs.com/wuchanming/p/3906176.html">C++ stringstream介绍，使用方法与例子</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1178753">再议GCC编译时的静态库依赖顺序问题</a></p>
+<ul>
+<li>被依赖的库放在后面;</li>
+<li>-Wl表示传递给ld;</li>
+<li>--start-group表示范围的开始;</li>
+<li>--end-group表示范围的结束;</li>
+<li>--whole-archive 和 --no-whole-archive.</li>
+</ul>
+<p><a href="https://www.cnblogs.com/my_life/articles/14577769.html">动态库依赖动态库，静态库依赖静态库，顺序</a></p>
+<ul>
+<li>编译链接库顺序:可执行文件-&gt;高级库-&gt;底层库,越底层越往后写;</li>
+<li>把第三方静态库链接给动态库需要加-fPIC</li>
+<li>链接过程:链接器从左往右搜索,未定义标注undefined,如果搜索到undefined的实现,就将其抽取出来,其余内容丢弃(依赖顺序的原因)</li>
+<li>环形链接:可以-la -lb -la这种方式解开</li>
+<li>ld的path可以用-rpath指定</li>
+</ul>
+<p><a href="https://www.cnblogs.com/black-mamba/p/9834659.html">bazel-编译静态库</a></p>
+<ul>
+<li>linkstatic = True,</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/40789518/how-to-list-dependencies-of-c-c-static-library">How to list dependencies of c/c++ static library?</a>:静态库没有依赖</p>
+<p><a href="https://blog.csdn.net/qq_36018594/article/details/104490187">如何查看静态编译的依赖(所链接的库)</a></p>
+<ul>
+<li>添加-Wl,-Map=output.map或者-Xlinker -Map = output.map 亦或者-Xlinker -Map -Xlinker output.map.其中output.map就是输出文件,里面包含了所有的符号(函数,变量等)的放置位置</li>
+</ul>
+<p><a href="https://blog.csdn.net/shixiaoguo90/article/details/24195391">Linux 查看进程ps命令及其参数</a></p>
+<ul>
+<li>ps axjf ps aux ps -ef ps -lA</li>
+<li>ps -eo pid,stat,pri,uid –sort uid</li>
+<li>ps -eo user,pid,stat,rss,args –sort rss</li>
+</ul>
+<p><a href="https://sourceware.org/gdb/onlinedocs/gdb/Attach.html">4.7 Debugging an Already-running Process</a></p>
+<p><a href="https://blog.csdn.net/jirryzhang/article/details/72801284">Linux查看动态链接库的所有函数以及在动态链接库查找某一个函数的方法</a></p>
+<ul>
+<li>nm -D yourLib.so |grep -w yourFunction</li>
+<li>objdump -tT xxx.so <a href="https://blog.csdn.net/chrisnotfound/article/details/80662923">1</a></li>
+</ul>
+<p>[objdump -p 查看库文件版本信息](objdump -p 查看库文件版本信息)</p>
+<p><a href="https://github.com/di/markdown-description-example/issues/4">Even in new setuptools I get this error: Unknown distribution option: 'long_description_content_type'</a>: python setup.py失败</p>
+<p><a href="https://bbs.csdn.net/topics/90106218">PS命令显示的命令长度只有80字符</a></p>
+<ul>
+<li>ps -auxww</li>
+<li>ps -ef | more</li>
+<li>ps -ef --columns 1000</li>
+</ul>
+<p><a href="https://github.com/envoyproxy/envoy/blob/main/bazel/README.md">bazel使用方法</a></p>
+<ul>
+<li>bazel build -s //source/...</li>
+<li>bazel build --explain=file.txt //source/...</li>
+<li>bazel build --explain=file.txt --verbose_explanations //source/...</li>
+</ul>
+<p><a href="https://github.com/replicate/cog">replicate/cog</a>: 自动构建ML环境并运行模型,或者自动化构建镜像,主要特点是将依赖库版本隐藏, 自动推导</p>
+<p><a href="https://www.cyberciti.biz/faq/unix-linux-dd-create-make-disk-image-commands/">How to make disk image with dd on Linux or Unix</a></p>
+<ul>
+<li>dd if=/dev/zero of=/tmp/zero.file</li>
+</ul>
+<p><a href="https://github.com/healthchecks/healthchecks">GitHub - healthchecks/healthchecks: A cron monitoring tool written in Python &amp; Django</a>: 开源cron类工具,可发出警报</p>
+<p><a href="https://zh-cn.topographic-map.com/">中国地形地图</a></p>
+<p><a href="https://tool.oschina.net/uploads/apidocs/jquery/regexp.html">正则表达式手册</a></p>
+<p><a href="https://hackway.org/docs/cs/senior/algorithm/cs6851">MIT 6.851 高级数据结构</a>: 计算机必修课整理</p>
+<p><a href="https://github.com/moyy996/AVDC">AVDC</a>: 日本电影刮削</p>
+<p><a href="https://neetcode.io/practice">neetcode</a>: 分类刷题</p>
+<p><a href="https://www.careercup.com/resume">This Is What A GOOD Resume Should Look Like</a>: CV建议</p>
+<p><a href="https://www.levels.fyi/?compare=Google,Northrop%20Grumman,Riot%20Games&amp;track=Software%20Engineer">levels.fyi</a>: 国外公司职级对比</p>
+<p><a href="https://fabiensanglard.net/st/index.html">st</a>: 查看程序运行时间和内存使用, 基于strace和time</p>
+<p><a href="https://github.com/ollama/ollama">ollama</a>: llama本地客户端</p>
+<p><a href="https://www.linuxfromscratch.org/lfs/view/stable/">Linux From Scratch Version 12.0</a>: 从头学linux, 图书</p>
+<p><a href="https://gitlab.com/wsdjeg/Learn-Vim_zh_cn">Learn Vim Zh Cn</a>: 中文版学vim</p>
+<p><a href="https://code.gpthanghai.com/?continueFlag=81580051539fb51647e5a6182e225957">RunningCode</a>: 经典面试题</p>
+<p><a href="https://github.com/JimLiu/gpt-api">gpt-api</a>: 网页tomarkdown工具/接口</p>
+<p><a href="https://github.com/duxins/alog">ALog</a>: 录音转写及总结工具</p>
+<p><a href="https://github.com/richawo/minimal-llm-ui">minimal-llm-ui</a>: ollama UI</p>
+<p><a href="https://github.com/Nutlope/notesGPT">notesGPT</a>: 使用语音输入并使用GPT总结的记录应用</p>
+<p><a href="https://m.okjike.com/originalPosts/65c851a212ed2fda6824cbdf?s=eyJ1IjoiNTkxYTVjZjNjZDIwYTYwMDEzZDZmMGUxIiwiZCI6Mn0%3D">农村自建房图纸</a>: <a href="https://ghzrzyw.beijing.gov.cn/biaozhunguanli/bzgj/zdxtj/">北京样式</a>, <a href="https://zjw.sh.gov.cn/zt7/index.html">上海样式</a>, 可以到自家县政府网站中寻找一下</p>
+<p><a href="https://github.com/LC044/WeChatMsg">WeChatMsg</a>: 微信聊天记录导出成HTML</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="06.systems.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="09.languages.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="06.systems.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="09.languages.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>深度学习加速方法 - 福来鸽的剪报库</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="01.intro.html">简要介绍</a></li><li class="chapter-item expanded affix "><li class="part-title">深度学习</li><li class="chapter-item expanded "><a href="02.deep-models.html"><strong aria-hidden="true">1.</strong> 深度学习模型与算法</a></li><li class="chapter-item expanded "><a href="03.deep-modules.html"><strong aria-hidden="true">2.</strong> 深度学习结构与组件</a></li><li class="chapter-item expanded "><a href="04.deep-accelate.html" class="active"><strong aria-hidden="true">3.</strong> 深度学习加速方法</a></li><li class="chapter-item expanded "><a href="05.deep-hardware.html"><strong aria-hidden="true">4.</strong> 深度学习硬件</a></li><li class="chapter-item expanded affix "><li class="part-title">系统与应用</li><li class="chapter-item expanded "><a href="06.systems.html"><strong aria-hidden="true">5.</strong> 操作系统与系统软件</a></li><li class="chapter-item expanded "><a href="07.tools.html"><strong aria-hidden="true">6.</strong> 实用工具</a></li><li class="chapter-item expanded "><a href="09.languages.html"><strong aria-hidden="true">7.</strong> 编程语言</a></li><li class="chapter-item expanded affix "><li class="part-title">未整理链接</li><li class="chapter-item expanded "><a href="11.links.html"><strong aria-hidden="true">8.</strong> 技术链接</a></li><li class="chapter-item expanded "><a href="12.weibo.html"><strong aria-hidden="true">9.</strong> 微博链接</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">福来鸽的剪报库</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="模型部署和加速"><a class="header" href="#模型部署和加速">模型部署和加速</a></h1>
+<h2 id="训练"><a class="header" href="#训练">训练</a></h2>
+<h3 id="训练框架"><a class="header" href="#训练框架">训练框架</a></h3>
+<p><a href="https://github.com/codeplea/genann">Genann</a>: c语言的ANN训练框架开发教程(示例)</p>
+<p><a href="https://mp.weixin.qq.com/s/fdou9rDt8GMGT0aki-6K9A">图解大模型训练系列之：DeepSpeed-Megatron MoE并行训练（原理篇）</a>: 分析Deepspeed在MoE 大模型训练时候的设计思路</p>
+<p><a href="https://github.com/stas00/ml-engineering/blob/master/README.md">Machine Learning Engineering Open Book</a>: 正在更新的图书,可以熟悉LLM及软硬件的相关知识</p>
+<p><a href="https://github.com/harvard-edge/cs249r_book">MACHINE LEARNING SYSTEMS with TinyML</a>: 图书</p>
+<h4 id="deepspeed"><a class="header" href="#deepspeed"><a href="https://github.com/microsoft/DeepSpeed">Deepspeed</a></a></h4>
+<p><a href="https://aijishu.com/a/1060000000397639">DeepSpeed Chat: 一键式RLHF训练，让你的类ChatGPT千亿大模型提速省钱15倍</a></p>
+<ul>
+<li>Deepspeed框架的<a href="https://github.com/microsoft/DeepSpeedExamples/tree/master/applications/DeepSpeed-Chat">Chat模型训练实例</a>.</li>
+</ul>
+<p><a href="https://mp.weixin.qq.com/s/NYHTsxZZ7-DN7rfYPjTogQ?v_p=90&amp;WBAPIAnalysisOriUICodes=10000001&amp;wm=3333_2001&amp;aid=01A2GUVvCiJ0bN45VH0AOVftc20OVPaYUZmVa1h1s_8-8xrdg.&amp;from=10D5193010">一文详解解 DeepSpeed</a></p>
+<p><a href="https://mp.weixin.qq.com/s/t5lT1NIZ6TysfgJks7kYKA?v_p=90&amp;WBAPIAnalysisOriUICodes=10000001&amp;wm=3333_2001&amp;aid=01A2GUVvCiJ0bN45VH0AOVftc20OVPaYUZmVa1h1s_8-8xrdg.&amp;from=10D5193010">一键式 RLHF 训练 DeepSpeed Chat（一）：理论篇</a></p>
+<p><a href="https://arxiv.org/abs/2207.00032">DeepSpeed Inference: Enabling Efficient Inference of Transformer Models at Unprecedented Scale</a></p>
+<p><a href="https://www.microsoft.com/en-us/research/blog/deepspeed-compression-a-composable-library-for-extreme-compression-and-zero-cost-quantization/">DeepSpeed Compression: A composable library for extreme compression and zero-cost quantization</a></p>
+<p><a href="https://mp.weixin.qq.com/s/thlnokFT495NMOzC08FInw">NLP大规模语言模型微调实践：DeepSpeed+Transformers实现简单快捷上手百亿参数模型微调</a></p>
+<p><a href="https://www.ithome.com/0/686/048.htm">人手一个 ChatGPT，微软 DeepSpeed Chat 震撼发布，一键 RLHF 训练千亿级大模型</a></p>
+<p><a href="https://mp.weixin.qq.com/s/CCFpr9rfpFmwHFLB29KGCg">DeepSpeed-Chat：最强ChatGPT训练框架，一键完成RLHF训练！</a></p>
+<p><a href="https://mp.weixin.qq.com/s/5Zx3I39cPzfWt-HN_e-jFw">使用DeepSpeed/P-Tuning v2对ChatGLM-6B进行微调</a></p>
+<p><a href="https://github.com/CSHaitao/ChatGLM_mutli_gpu_tuning">ChatGLM_multi_gpu_zero_Tuning</a></p>
+<p><a href="https://mp.weixin.qq.com/s/UO7bLghblw-uoErSnnQyEQ">【DeepSpeed 教程翻译】二，Megatron-LM GPT2，Zero 和 ZeRO-Offload</a></p>
+<p><a href="https://mp.weixin.qq.com/s/xpNQtl7hPs3fy9S7VRbIkg">【DeepSpeed 教程翻译】开始，安装细节和CIFAR-10 Tutorial</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA4MjY4NTk0NQ==&amp;mid=2247509973&amp;idx=1&amp;sn=556bdac8e4d35ae44e426e3032525fd8&amp;chksm=9f831d43a8f49455d53b36220088baeccdba661b68d0ae9fa86b64e8025554d7bfb19537b599&amp;scene=178&amp;cur_album_id=2961704839032373253#rd">DeepSpeed结合Megatron-LM训练GPT2模型笔记（上）</a></p>
+<p><a href="https://mp.weixin.qq.com/s/oJVTnStufXheobXvpVB8cQ">如何使用 Ray + DeepSpeed + HuggingFace 简单、快速、高效、高性价比地微调和部署大型语言模型</a></p>
+<p><a href="https://www.microsoft.com/en-us/research/blog/deepspeed-zero-a-leap-in-speed-for-llm-and-chat-model-training-with-4x-less-communication/">DeepSpeed ZeRO++: A leap in speed for LLM and chat model training with 4X less communication</a></p>
+<ul>
+<li>chatgpt减少通信量方法</li>
+</ul>
+<h3 id="megatron"><a class="header" href="#megatron">Megatron</a></h3>
+<p><a href="https://mp.weixin.qq.com/s/KAW1DD8P0Q1Ljsacs8r3rQ">图解大模型训练之：Megatron源码解读2，模型并行</a></p>
+<h3 id="数据并行"><a class="header" href="#数据并行">数据并行</a></h3>
+<p><a href="https://mp.weixin.qq.com/s/HrAl9E6Xn8YA9eP-f_sZKw">HPC、RDMA资料分享：2023 OpenFabrics Alliance会议</a></p>
+<ul>
+<li>RDMA资料,见<a href="https://pan.baidu.com/s/1tiFurQmcK3uhZH331b7bSA?pwd=8wye">百度网盘, 解压密码: ofa2023</a></li>
+</ul>
+<h3 id="模型并行"><a class="header" href="#模型并行">模型并行</a></h3>
+<h3 id="流水并行"><a class="header" href="#流水并行">流水并行</a></h3>
+<h3 id="调优方法"><a class="header" href="#调优方法">调优方法</a></h3>
+<p><a href="https://github.com/schrodingercatss/tuning_playbook_zh_cn">深度学习调优指南中文版</a></p>
+<ul>
+<li>谷歌深度学习调优手册中文翻译</li>
+</ul>
+<p><a href="https://mp.weixin.qq.com/s/hZIFDzBQ9TGTST1lFUouEw">绕开算力限制，如何用单GPU微调 LLM？这是一份「梯度累积」算法教程</a></p>
+<p><a href="https://github.com/hiyouga/LLaMA-Efficient-Tuning">LLaMA-Efficient-Tuning</a></p>
+<ul>
+<li>LLaMA高效调优库</li>
+</ul>
+<p><a href="https://sebastianraschka.com/blog/2023/falcon-finetuning.html">Finetuning Falcon LLMs More Efficiently With LoRA and Adapters</a></p>
+<h2 id="推理"><a class="header" href="#推理">推理</a></h2>
+<h3 id="推理框架"><a class="header" href="#推理框架">推理框架</a></h3>
+<p><a href="https://github.com/tenstorrent/tt-buda">TT-Buda</a>: tenstorrent硬件的AI编译工具</p>
+<p><a href="https://mp.weixin.qq.com/s/Plcp3tIXhQE1pXgM9C9JSg">Text Generation Inference源码解读（二）：模型加载与推理</a>: TGI优化方法总结和新量化推理方法添加</p>
+<p><a href="https://github.com/Jittor/JittorLLMs">JittorLLMs</a></p>
+<ul>
+<li>清华大模型推理库, 最低2G内存,支持chatGLM/盘古/chatRWKV/LLaMA,只需安装JTorch,提升速度</li>
+</ul>
+<p><a href="https://github.com/PaddlePaddle/FlyCV">FlyCV</a></p>
+<ul>
+<li>OpenCV竞品, 高性能计算机图像系统, 支持C++/JS,针对ARM优化,支持多种异构硬件</li>
+</ul>
+<p><a href="https://github.com/ztxz16/fastllm">fastllm</a></p>
+<ul>
+<li>llm加速库,支持moss/chatGLM,baichuan,支持手机端和GPU(int8)</li>
+</ul>
+<p><a href="https://towardsdatascience.com/merge-large-language-models-with-mergekit-2118fb392b54">Merge Large Language Models with mergekit</a>: 四种模型融合方法, SLERP、TIES、DARE和级联</p>
+<p><a href="https://github.com/FlagOpen/FlagPerf">FlagPerf</a>: 智源开源的异构AI芯片测评框架</p>
+<p><a href="https://github.com/janhq/jan">jan</a>: 本地大模型运行软件, 可替代chatgpt</p>
+<h3 id="量化"><a class="header" href="#量化">量化</a></h3>
+<p><a href="https://sebastianraschka.com/blog/2023/llm-mixed-precision-copy.html">Accelerating Large Language Models with Mixed-Precision Techniques</a></p>
+<h3 id="剪枝"><a class="header" href="#剪枝">剪枝</a></h3>
+<h3 id="蒸馏"><a class="header" href="#蒸馏">蒸馏</a></h3>
+<p><a href="https://github.com/foldl/chatllm.cpp">ChatLLM.cpp</a>: 基于ggml的C++大模型CPU推理引擎</p>
+<h2 id="深度学习编译器"><a class="header" href="#深度学习编译器">深度学习编译器</a></h2>
+<p><a href="https://www.zhihu.com/question/28862935/answer/3049912195">如何开发编译器?</a></p>
+<ul>
+<li>旷视编译器介绍</li>
+<li>编译器最重要的两个概念是IR和PASS</li>
+<li>前端优化方法
+<ul>
+<li>node level:去掉无用节点,替换搞笑节点</li>
+<li>block level:代数简化,算子融合</li>
+<li>dataflow level:静态内存优化</li>
+</ul>
+</li>
+<li>后端优化(见下图)
+<ul>
+<li>通用优化:循环展开/循环融合/访存掩盖</li>
+<li>硬件优化:指令映射(gemm)/向量化(循环)/手工kernel</li>
+</ul>
+</li>
+<li>MEGCC编译过程
+<ul>
+<li>Megengine导入模型并静态图优化</li>
+<li>转换为MLIR的MGB IR</li>
+<li>生成Abstract Kernel IR,最终转换成Kernel IR</li>
+<li>导出为runtime model和runtime kernel</li>
+</ul>
+</li>
+</ul>
+<p><img src="../pics/back_end_optim.jpg" alt="后端优化" /></p>
+<p><a href="https://aijishu.com/a/1060000000409104">TVM北京交流会</a></p>
+<ul>
+<li>后续PPT有时间可以整理一些</li>
+</ul>
+<p><a href="https://www.cnblogs.com/wujianming-110117/p/17426917.html">Clang前端使用LLVM Pass示例</a></p>
+<ul>
+<li>原博客在<a href="https://mp.weixin.qq.com/s/e3e4a7ei61O99-JUWjDbnA">微信公众号</a></li>
+</ul>
+<p><a href="https://zhuanlan.zhihu.com/p/552537009?utm_id=0">（十八）使用 DLA</a></p>
+<ul>
+<li>cuDLA是加速引擎库</li>
+</ul>
+<p><a href="https://jinleili.github.io/learn-wgpu-zh/">学习wgpu</a></p>
+<ul>
+<li>webgpu教材翻译,在网页内访问GPU</li>
+</ul>
+<p><a href="https://llvm.org/devmtg/2019-04/slides/TechTalk-Joerg-Automated_GPU_Kernel_Fusion_with_XLA.pdf">Automated GPU Kernel Fusion with XLA</a>: XLA融合介绍</p>
+<p><a href="https://github.com/intel/scikit-learn-intelex">Intel(R) Extension for Scikit-learn*</a>: Intel Extension, import然后执行替换的方式很不错</p>
+<p><a href="https://www.intel.com/content/www/us/en/developer/tools/documentation.html">Intel 文档中心</a></p>
+<p><a href="https://github.com/esa/torchquad">torchquad@github</a>:PyTorch实现的GPU任意维高性能数值积</p>
+<p><a href="https://mp.weixin.qq.com/s/O6spKbznq9bAQTqZkq7vXA">编译器优化那些事儿（12）：LLVM 自动向量化</a>: 向量化</p>
+<p><a href="https://github.com/huggingface/text-generation-inference">Text Generation Inference</a>: huggingface的推理引擎</p>
+<h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
+<p><a href="https://github.com/leptonai/search_with_lepton/tree/main">Search with Lepton</a>: 实现的一个对话式搜索引擎, 试用在<a href="https://search.lepton.run/">这里</a></p>
+<p><a href="https://github.com/morousg/cvGPUSpeedup">cvGPUSpeedup</a>: CV-CUDA的加速实现, 优化了读取</p>
+<p><a href="https://github.com/kibae/onnxruntime-server">onnxruntime-server</a>: onnx文件的serve框架,可以自动配置REST API</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="03.deep-modules.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="05.deep-hardware.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="03.deep-modules.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="05.deep-hardware.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
